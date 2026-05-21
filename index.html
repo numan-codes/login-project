@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOGIN</title>
+
+<style>
+body{
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* LOGIN BOX */
+.login-box{
+    background: #fff;
+    padding: 30px;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* INPUTS */
+input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* BUTTON */
+button{
+    width: 100%;
+    padding: 10px;
+    background: darkblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover{
+    background: brown;
+}
+
+/* MESSAGE */
+#msg{
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* SHAKE ANIMATION */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake{
+  animation: shake 0.3s;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+    <h2>LOGIN</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p id="msg"></p>
+</div>
+
+<script>
+function login(){
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+    let msg  = document.getElementById("msg");
+    let box  = document.querySelector(".login-box");
+
+    if(user === "numan" && pass === "1234"){
+        msg.style.color = "green";
+        msg.innerText = "Login Successful ✅";
+
+        setTimeout(() => {
+            window.location.href = "information.html";
+        }, 800);
+
+    }else{
+        msg.style.color = "red";
+        msg.innerText = "Wrong Username or Password ❌";
+
+        box.classList.add("shake");
+        setTimeout(() => box.classList.remove("shake"), 300);
+    }
+}
+</script>
+
+</body>
+</html>
